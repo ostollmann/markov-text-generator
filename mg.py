@@ -146,9 +146,10 @@ if __name__ == "__main__":
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     num_words = int(sys.argv[3])
+    num_states_factor = float(sys.argv[4])
 
     print "Extracting transition probabilities from learning text '%s' (this may take a long time...)" % input_file
-    states, tp = extract_tp(read_file(input_file), None, 0.4)
+    states, tp = extract_tp(read_file(input_file), None, num_states_factor)
 
     print "Generating text (%s words)" % num_words
     text = make_nice_text(generate(states, tp, num_words, "The"), True, 0.2)
